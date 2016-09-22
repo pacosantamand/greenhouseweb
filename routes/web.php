@@ -17,4 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 Route::get('/home', 'HomeController@index');
+Route::resource('users','UserController');
+Route::resource('variables','VariableController');
+Route::resource('invernaderos','InvernaderoController');
+// Route::group(array('prefix' => 'restapi/v1'), function()
+// {
+//   Route::resource('/invernaderos','InvernaderoRestController');
+//   Route::resource('/tareas','TareasRestController');
+// });
