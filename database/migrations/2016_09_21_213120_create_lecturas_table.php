@@ -14,10 +14,9 @@ class CreateLecturasTable extends Migration
     public function up()
     {
         Schema::create('lecturas', function (Blueprint $table) {
-           // $table->increments('id');
+            $table->increments('id');
             $table->unsignedInteger('invernadero');
             $table->unsignedInteger('variable');
-            $table->primary(['invernadero','variable']);
             $table->float('valor');
             $table->foreign('invernadero')->references('invernadero_id')->on('invernadero_variable');
             $table->foreign('variable')->references('variable_id')->on('invernadero_variable');

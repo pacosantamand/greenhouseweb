@@ -19,7 +19,7 @@ class Invernadero extends Model
     }
 
     public function variables(){
-    	return $this->belongsToMany('App\Variable');
+    	return $this->belongsToMany('App\Variable')->select('id','nombre');
     }
 
     public function colaboradores(){
