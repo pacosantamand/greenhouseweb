@@ -82,7 +82,7 @@
 								 		<div class="row">
 								 			<div class="col-md-8">
 								 				<div class="chart">
-												<canvas id="myChart" style="height:200px"></canvas>
+												<canvas id="{{  strtolower($invernadero->variables->get($i)->nombre)}}" style="height:200px"></canvas>
 												</div>
 								 			</div>
 								 			<div class="col-md-4">
@@ -115,8 +115,7 @@
 								 	 	<div class="row">
 								 	 		<div class="col-md-8">
 								 	 			<div class="chart">
-								 	 			<canvas id="myChart2" style="height:200px"></canvas>
-								 	 			</div>
+								 	 			<canvas id="{{  strtolower($invernadero->variables->get($i)->nombre)}}" style="height:200px"></canvas>
 								 			</div>
 								 			<div class="col-md-4">
 								 				<div class="info-box bg-red">
@@ -162,9 +161,7 @@
 <script>
 var variables = {!!json_encode($invernadero->variables,JSON_FORCE_OBJECT) !!} ;
 
-var ctx = document.getElementById("myChart");
-
-var tamano = variables.length;
+var ctx = document.getElementById(variables[0].nombre.toLowerCase());
 
 var myChart = new Chart(ctx, {
     type: 'line',

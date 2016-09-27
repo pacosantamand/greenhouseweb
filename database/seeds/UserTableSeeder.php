@@ -17,5 +17,17 @@ class UserTableSeeder extends Seeder
           'tipo'=>'administrador',
           'password'=>bcrypt('thislove'),
         ]);
+        DB::table('users')->insert([
+          'name'=>'nalle',
+          'email'=>'nalle@mail.com',
+          'tipo'=>'agronomo',
+          'password'=>bcrypt('thislove'),
+        ]);
+        DB::table('users')->insert([
+          'name'=>'pepe',
+          'email'=>'pepe@mail.com',
+          'tipo'=>'colaborador',
+          'password'=>bcrypt('thislove'),
+        ]);
     }
 }
