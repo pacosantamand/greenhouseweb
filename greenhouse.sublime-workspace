@@ -147,15 +147,39 @@
 			}
 		},
 		{
-			"contents": "@extends('layouts.app')\n\n@section('htmlheader_title')\n\tInvernaderos\n@endsection\n\n\n@section('main-content')\n\t<div class=\"container spark-screen\">\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-md-6\">\n\t\t\t\t<div class=\"box box-default\">\n\t\t\t\t\t<div class=\"box-header with-border\">\n\t                    <h3 class=\"box-title\">Información</h3>\n\t                </div>\n\t                <div class=\"box-body\">\n\t\t\t\t\t\t<p><strong>Nombre: </strong>{{ $invernadero->nombre }}</p>\n\t\t\t\t\t\t<p><strong>Responsable: </strong> {{ $invernadero->encargado->name}}</p>\n\t\t\t\t\t\t<p><strong>Descripción: </strong> {{ $invernadero->descripcion}}</p>\n\t\t\t\t\t\t<p> aqui va el mapa </p>\n\n\t\t\t\t\t\t<p>{{$invernadero->variables}}</p>\t\n \t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"col-md-6\">\n\t\t\t\t<div class=\"box box-default\">\n\t\t\t\t\t<div class=\"box-header with-border\">\n\t                    <h3 class=\"box-title\">Ultimas tareas</h3>\n\t                </div>\n\t                <div class=\"box-body\">\n\t\t\t\t\t\t<ul class=\"products-list product-list-in-box\">\n\t\t\t\t\t\t\t@foreach($invernadero->tareas as $tarea)\n\t\t\t\t\t\t\t<li class=\"item\">\n\t\t\t\t\t\t\t\t<div class=\"product-img\">\n\t\t\t\t\t\t\t\t\t<img src=\"{{asset('/img/default-50x50.gif')}}\"></img>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"product-info\">\n\t\t\t\t\t\t\t\t\t<a href =\"#\" class=\"product-title\">{{$tarea->nombre}}\n\t\t\t\t\t\t\t\t\t@if($tarea->realizada == 1)\n\t\t\t\t\t\t\t\t\t<span class=\"label label-success pull-right\"><i class=\"fa fa-check\"></i> Realizada</span>\n\t\t\t\t\t\t\t\t\t@else\n\t\t\t\t\t\t\t\t\t<span class=\"label label-danger pull-right\"><i class=\"fa fa-warning\"></i> No realizada</span>\n\t\t\t\t\t\t\t\t\t@endif</a>\n\t\t\t\t\t\t\t\t\t<span class=\"product-description\">{{$tarea->colaborador->name}}</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t@endforeach\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"box-footer\">\n\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-sm btn-default btn-flat pull-left\">Ver todas</a>\n\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-sm btn-primary btn-flat pull-right\">Asignar tarea</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-md-12\">\n\t\t\t\t<div class=\"box box-default\">\n\t\t\t\t\t<div class=\"box-header\">\n\t                    <h3 class=\"box-title\">Ultimas lecturas</h3>\n\t                    <div class=\"box-tools pull-right\">\n      \t\t\t\t\t\t<button class=\"btn btn-box-tool\" data-widget=\"collapse\"><i class=\"fa fa-minus\"></i></button>\n    \t\t\t\t\t</div><!-- /.box-tools -->\n\t                </div>\n\t                <div class=\"box-body\">\n\t                \t<ul class=\"nav nav-tabs\">\n\t                \t\t@for($i=0;$i<count($invernadero->variables);$i++)\n\t                \t\t\t@if($i==0)\n\t\t\t\t\t\t\t  \t\t<li role=\"presentation\" class=\"active\"><a href=\"#{{$invernadero->variables->get($i)->nombre}}\"  data-toggle=\"tab\">{{$invernadero->variables->get($i)->nombre}}</a></li>\n\t\t\t\t\t\t\t  \t@else\n\t\t\t\t\t\t\t  \t\t<li role=\"presentation\"><a href=\"#humedad\"  data-toggle=\"tab\">Humedad</a></li>\n\t\t\t\t\t\t\t  \t@endif\n\t\t\t\t\t\t\t@endfor\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t<div id=\"myPillContent\" class=\"tab-content\">\n\t\t\t\t\t\t \t@for($i=0;$i<count($invernadero->variables);$i++)\n\t\t\t\t\t\t \t\t@if($i==0)\n\t\t\t\t\t\t\t\t \t<div class=\"tab-pane fade active in\" id=\"{{$invernadero->variables->get($i)->nombre}}\">\n\t\t\t\t\t\t\t\t \t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t \t\t\t<div class=\"col-md-8\">\n\t\t\t\t\t\t\t\t \t\t\t\t<div class=\"chart\">\n\t\t\t\t\t\t\t\t\t\t\t\t<canvas id=\"{{  strtolower($invernadero->variables->get($i)->nombre)}}\" style=\"height:200px\"></canvas>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t \t\t\t</div>\n\t\t\t\t\t\t\t\t \t\t\t<div class=\"col-md-4\">\n\t\t\t\t\t\t\t\t \t\t\t\t<div class=\"info-box bg-red\">\n\t\t  \t\t\t\t\t\t\t\t\t\t\t<span class=\"info-box-icon\"><i class=\"fa fa-comments-o\"></i></span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"info-box-content\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t    <span class=\"info-box-text\">Máxima</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t    <span class=\"info-box-number\">45 °C</span>\n\t\t\t\t\t\t\t\t\t\t\t\t  </div><!-- /.info-box-content -->\n\t\t\t\t\t\t\t\t\t\t\t\t</div><!-- /.info-box -->\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"info-box bg-green\">\n\t\t  \t\t\t\t\t\t\t\t\t\t\t<span class=\"info-box-icon\"><i class=\"fa fa-comments-o\"></i></span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"info-box-content\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t    <span class=\"info-box-text\">Promedio</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t    <span class=\"info-box-number\">37 °C</span>\n\t\t\t\t\t\t\t\t\t\t\t\t  </div><!-- /.info-box-content -->\n\t\t\t\t\t\t\t\t\t\t\t\t</div><!-- /.info-box -->\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"info-box bg-blue\">\n\t\t  \t\t\t\t\t\t\t\t\t\t\t<span class=\"info-box-icon\"><i class=\"fa fa-comments-o\"></i></span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"info-box-content\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t    <span class=\"info-box-text\">Mínima</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t    <span class=\"info-box-number\">28 °C</span>\n\t\t\t\t\t\t\t\t\t\t\t\t  </div><!-- /.info-box-content -->\n\t\t\t\t\t\t\t\t\t\t\t\t</div><!-- /.info-box -->\n\t\t\t\t\t\t\t\t \t\t\t</div>\n\t\t\t\t\t\t\t\t \t\t</div>\n\t\t\t\t\t\t\t\t \t</div>\n\t\t\t\t\t\t\t\t@else\n\t\t\t\t\t\t\t\t \t <div class=\"tab-pane fade\" id=\"{{$invernadero->variables->get($i)->nombre}}\">\n\t\t\t\t\t\t\t\t \t \t<div class=\"row\">\n\t\t\t\t\t\t\t\t \t \t\t<div class=\"col-md-8\">\n\t\t\t\t\t\t\t\t \t \t\t\t<div class=\"chart\">\n\t\t\t\t\t\t\t\t \t \t\t\t<canvas id=\"{{ strtolower($invernadero->variables->get($i)->nombre)}}\" style=\"height:200px\"></canvas>\n\t\t\t\t\t\t\t\t \t\t\t</div>\n\t\t\t\t\t\t\t\t \t\t\t<div class=\"col-md-4\">\n\t\t\t\t\t\t\t\t \t\t\t\t<div class=\"info-box bg-red\">\n\t\t  \t\t\t\t\t\t\t\t\t\t\t<span class=\"info-box-icon\"><i class=\"fa fa-comments-o\"></i></span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"info-box-content\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t    <span class=\"info-box-text\">Máxima</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t    <span class=\"info-box-number\">80%</span>\n\t\t\t\t\t\t\t\t\t\t\t\t  </div><!-- /.info-box-content -->\n\t\t\t\t\t\t\t\t\t\t\t\t</div><!-- /.info-box -->\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"info-box bg-green\">\n\t\t  \t\t\t\t\t\t\t\t\t\t\t<span class=\"info-box-icon\"><i class=\"fa fa-comments-o\"></i></span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"info-box-content\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t    <span class=\"info-box-text\">Promedio</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t    <span class=\"info-box-number\">72%</span>\n\t\t\t\t\t\t\t\t\t\t\t\t  </div><!-- /.info-box-content -->\n\t\t\t\t\t\t\t\t\t\t\t\t</div><!-- /.info-box -->\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"info-box bg-aqua\">\n\t\t  \t\t\t\t\t\t\t\t\t\t\t<span class=\"info-box-icon\"><i class=\"fa fa-comments-o\"></i></span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"info-box-content\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t    <span class=\"info-box-text\">Mínima</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t    <span class=\"info-box-number\">60%</span>\n\t\t\t\t\t\t\t\t\t\t\t\t  \t</div><!-- /.info-box-content -->\n\t\t\t\t\t\t\t\t\t\t\t\t</div><!-- /.info-box -->\n\t\t\t\t\t\t\t\t \t\t\t</div>\n\t\t\t\t\t\t\t\t \t \t</div>\n\t\t\t\t\t\t\t\t \t</div>\n\t\t\t\t\t\t\t\t@endif\n\t\t\t\t\t\t\t@endfor\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n@endsection\n\n\n@section('other_scripts')\n\n<script src=\"{{ asset('/js/Chart.js') }}\" type=\"text/javascript\"></script>\n\n\n<script>\nvar variables = {!!json_encode($invernadero->variables,JSON_FORCE_OBJECT) !!} ;\n\nvar ctx = document.getElementById(variables[0].nombre.toLowerCase());\n\nvar myChart = new Chart(ctx, {\n    type: 'line',\n    data: {\n    \tlabels: [\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\"],\n    \tdatasets: [\n        {\n            label: variables[0].nombre,\n            fill: true,\n            lineTension: 0.1,\n            backgroundColor: \"rgba(75,192,192,0.4)\",\n            borderColor: \"rgba(75,192,192,1)\",\n            borderCapStyle: 'butt',\n            borderDash: [],\n            borderDashOffset: 0.0,\n            borderJoinStyle: 'miter',\n            pointBorderColor: \"rgba(75,192,192,1)\",\n            pointBackgroundColor: \"#fff\",\n            pointBorderWidth: 1,\n            pointHoverRadius: 5,\n            pointHoverBackgroundColor: \"rgba(75,192,192,1)\",\n            pointHoverBorderColor: \"rgba(220,220,220,1)\",\n            pointHoverBorderWidth: 2,\n            pointRadius: 1,\n            pointHitRadius: 10,\n            data: [35, 29, 40, 41, 46, 35, 30],\n            spanGaps: false,\n        } ]\n\t},\n    options: {\n        scales: {\n            xAxes: [{\n                // type: 'linear',\n                position: 'bottom'\n            }]\n        }\n    }\n});\n\n// var humedad = document.getElementById(\"myChart2\");\n// var myLineChart = new Chart(humedad, {\n//     type: 'line',\n//     data: {\n//     \tlabels: [\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\"],\n//     \tdatasets: [\n//         {\n//             label: \"Humedad\",\n//             fill: true,\n//             lineTension: 0.1,\n//             backgroundColor: \"rgba(75,192,192,0.4)\",\n//             borderColor: \"rgba(75,192,192,1)\",\n//             borderCapStyle: 'butt',\n//             borderDash: [],\n//             borderDashOffset: 0.0,\n//             borderJoinStyle: 'miter',\n//             pointBorderColor: \"rgba(75,192,192,1)\",\n//             pointBackgroundColor: \"#fff\",\n//             pointBorderWidth: 1,\n//             pointHoverRadius: 5,\n//             pointHoverBackgroundColor: \"rgba(75,192,192,1)\",\n//             pointHoverBorderColor: \"rgba(220,220,220,1)\",\n//             pointHoverBorderWidth: 2,\n//             pointRadius: 1,\n//             pointHitRadius: 10,\n//             data: [65, 59, 80, 81, 56, 55, 40],\n//             spanGaps: false,\n//         }\n//     \t]\n// \t},\n//     options: {\n//         scales: {\n//             xAxes: [{\n//                 // type: 'linear',\n//                 position: 'bottom'\n//             }]\n//         }\n//     }\n// });\n</script>\n@endsection\n",
 			"file": "resources/views/invernaderos/show.blade.php",
-			"file_size": 9181,
-			"file_write_time": 131194323338814173,
 			"settings":
 			{
-				"buffer_size": 8927,
+				"buffer_size": 10445,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/layouts/app.blade.php",
+			"settings":
+			{
+				"buffer_size": 1957,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/layouts/partials/mainheader.blade.php",
+			"settings":
+			{
+				"buffer_size": 3979,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/layouts/partials/htmlheader.blade.php",
+			"settings":
+			{
+				"buffer_size": 1582,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -165,14 +189,6 @@
 				"buffer_size": 551,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/Variable.php",
-			"settings":
-			{
-				"buffer_size": 190,
-				"line_ending": "Windows"
 			}
 		},
 		{
@@ -261,14 +277,14 @@
 	},
 	"expanded_folders":
 	[
-		"/C/xampp/htdocs/greenhouseweb",
-		"/C/xampp/htdocs/greenhouseweb/app",
-		"/C/xampp/htdocs/greenhouseweb/app/Providers",
-		"/C/xampp/htdocs/greenhouseweb/database",
-		"/C/xampp/htdocs/greenhouseweb/database/seeds",
-		"/C/xampp/htdocs/greenhouseweb/resources",
-		"/C/xampp/htdocs/greenhouseweb/resources/views",
-		"/C/xampp/htdocs/greenhouseweb/resources/views/invernaderos"
+		"/Applications/MAMP/htdocs/greenhouseweb",
+		"/Applications/MAMP/htdocs/greenhouseweb/database",
+		"/Applications/MAMP/htdocs/greenhouseweb/database/seeds",
+		"/Applications/MAMP/htdocs/greenhouseweb/resources",
+		"/Applications/MAMP/htdocs/greenhouseweb/resources/views",
+		"/Applications/MAMP/htdocs/greenhouseweb/resources/views/layouts",
+		"/Applications/MAMP/htdocs/greenhouseweb/resources/views/layouts/partials",
+		"/Applications/MAMP/htdocs/greenhouseweb/routes"
 	],
 	"file_history":
 	[
@@ -391,7 +407,7 @@
 						"translation.y": 272.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -421,7 +437,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -451,7 +467,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -460,15 +476,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8927,
+						"buffer_size": 10445,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4823,
-								4823
+								2880,
+								2880
 							]
 						],
 						"settings":
@@ -476,7 +492,7 @@
 							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 6820.0,
+						"translation.y": 1458.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -484,6 +500,96 @@
 				},
 				{
 					"buffer": 4,
+					"file": "resources/views/layouts/app.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1957,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1250,
+								1250
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 202.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "resources/views/layouts/partials/mainheader.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3979,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								883,
+								883
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "resources/views/layouts/partials/htmlheader.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1582,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1037,
+								1037
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
 					"file": "database/seeds/VariableTableSeeder.php",
 					"semi_transient": false,
 					"settings":
@@ -501,45 +607,19 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "app/Variable.php",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 190,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
+					"buffer": 8,
 					"file": "database/seeds/DatabaseSeeder.php",
 					"semi_transient": false,
 					"settings":
@@ -551,23 +631,25 @@
 						"selection":
 						[
 							[
-								261,
-								261
+								237,
+								237
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 62.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 9,
 					"file": "database/seeds/UserTableSeeder.php",
 					"semi_transient": false,
 					"settings":
@@ -593,11 +675,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 10,
 					"file": "resources/views/invernaderos/create.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -623,11 +705,11 @@
 						"translation.y": 1627.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 11,
 					"file": "app/Invernadero.php",
 					"semi_transient": false,
 					"settings":
@@ -653,7 +735,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 10,
 					"type": "text"
 				}
 			]

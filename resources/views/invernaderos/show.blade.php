@@ -71,7 +71,7 @@
 	                			@if($i==0)
 							  		<li role="presentation" class="active"><a href="#{{$invernadero->variables->get($i)->nombre}}"  data-toggle="tab">{{$invernadero->variables->get($i)->nombre}}</a></li>
 							  	@else
-							  		<li role="presentation"><a href="#humedad"  data-toggle="tab">Humedad</a></li>
+							  		<li role="presentation"><a href="#{{$invernadero->variables->get($i)->nombre}}"  data-toggle="tab">{{$invernadero->variables->get($i)->nombre}}</a></li>
 							  	@endif
 							@endfor
 						</ul>
@@ -161,45 +161,93 @@
 <script>
 var variables = {!!json_encode($invernadero->variables,JSON_FORCE_OBJECT) !!} ;
 
-var ctx = document.getElementById(variables[0].nombre.toLowerCase());
+console.log("Hola mundo");
 
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-    	labels: ["January", "February", "March", "April", "May", "June", "July"],
-    	datasets: [
-        {
-            label: variables[0].nombre,
-            fill: true,
-            lineTension: 0.1,
-            backgroundColor: "rgba(75,192,192,0.4)",
-            borderColor: "rgba(75,192,192,1)",
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: "rgba(75,192,192,1)",
-            pointBackgroundColor: "#fff",
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: "rgba(75,192,192,1)",
-            pointHoverBorderColor: "rgba(220,220,220,1)",
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: [35, 29, 40, 41, 46, 35, 30],
-            spanGaps: false,
-        } ]
-	},
-    options: {
-        scales: {
-            xAxes: [{
-                // type: 'linear',
-                position: 'bottom'
-            }]
-        }
-    }
-});
+
+for(i=0;i<Object.keys(variables).length;i++){
+    
+    
+    var ctx = document.getElementById(variables[i].nombre.toLowerCase());
+
+	var myChart = new Chart(ctx, {
+	    type: 'line',
+	    data: {
+	    	labels: ["January", "February", "March", "April", "May", "June", "July"],
+	    	datasets: [
+	        {
+	            label: variables[i].nombre,
+	            fill: true,
+	            lineTension: 0.1,
+	            backgroundColor: "rgba(75,192,192,0.4)",
+	            borderColor: "rgba(75,192,192,1)",
+	            borderCapStyle: 'butt',
+	            borderDash: [],
+	            borderDashOffset: 0.0,
+	            borderJoinStyle: 'miter',
+	            pointBorderColor: "rgba(75,192,192,1)",
+	            pointBackgroundColor: "#fff",
+	            pointBorderWidth: 1,
+	            pointHoverRadius: 5,
+	            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+	            pointHoverBorderColor: "rgba(220,220,220,1)",
+	            pointHoverBorderWidth: 2,
+	            pointRadius: 1,
+	            pointHitRadius: 10,
+	            data: [35, 29, 40, 41, 46, 35, 30],
+	            spanGaps: false,
+	        } ]
+		},
+	    options: {
+	        scales: {
+	            xAxes: [{
+	                // type: 'linear',
+	                position: 'bottom'
+	            }]
+	        }
+	    }
+	});
+}
+
+
+// var ctx = document.getElementById(variables[0].nombre.toLowerCase());
+
+// var myChart = new Chart(ctx, {
+//     type: 'line',
+//     data: {
+//     	labels: ["January", "February", "March", "April", "May", "June", "July"],
+//     	datasets: [
+//         {
+//             label: variables[0].nombre,
+//             fill: true,
+//             lineTension: 0.1,
+//             backgroundColor: "rgba(75,192,192,0.4)",
+//             borderColor: "rgba(75,192,192,1)",
+//             borderCapStyle: 'butt',
+//             borderDash: [],
+//             borderDashOffset: 0.0,
+//             borderJoinStyle: 'miter',
+//             pointBorderColor: "rgba(75,192,192,1)",
+//             pointBackgroundColor: "#fff",
+//             pointBorderWidth: 1,
+//             pointHoverRadius: 5,
+//             pointHoverBackgroundColor: "rgba(75,192,192,1)",
+//             pointHoverBorderColor: "rgba(220,220,220,1)",
+//             pointHoverBorderWidth: 2,
+//             pointRadius: 1,
+//             pointHitRadius: 10,
+//             data: [35, 29, 40, 41, 46, 35, 30],
+//             spanGaps: false,
+//         } ]
+// 	},
+//     options: {
+//         scales: {
+//             xAxes: [{
+//                 // type: 'linear',
+//                 position: 'bottom'
+//             }]
+//         }
+//     }
+// });
 
 // var humedad = document.getElementById("myChart2");
 // var myLineChart = new Chart(humedad, {
