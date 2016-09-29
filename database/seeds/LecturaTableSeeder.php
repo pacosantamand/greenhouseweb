@@ -47,5 +47,44 @@ class LecturaTableSeeder extends Seeder
           'valor'=>45,
           'created_at'=>'2016-09-28 14:00',
         ]);
+
+        //Data humedad
+        DB::table('lecturas')->insert([
+          'invernadero'=>1,
+          'variable'=>2,
+          'valor'=>75,
+          'created_at'=>'2016-09-28 09:00',
+        ]);
+        DB::table('lecturas')->insert([
+          'invernadero'=>1,
+          'variable'=>2,
+          'valor'=>80,
+          'created_at'=>'2016-09-28 10:00',
+        ]);
+        DB::table('lecturas')->insert([
+          'invernadero'=>1,
+          'variable'=>2,
+          'valor'=>87,
+          'created_at'=>'2016-09-28 11:00',
+        ]);
+        DB::table('lecturas')->insert([
+          'invernadero'=>1,
+          'variable'=>2,
+          'valor'=>92,
+          'created_at'=>'2016-09-28 12:00',
+        ]);
+        DB::table('lecturas')->insert([
+          'invernadero'=>1,
+          'variable'=>2,
+          'valor'=>88,
+          'created_at'=>'2016-09-28 13:00',
+        ]);
+        DB::table('lecturas')->insert([
+          'invernadero'=>1,
+          'variable'=>2,
+          'valor'=>95,
+          'created_at'=>'2016-09-28 14:00',
+        ]);
+
     }
 }

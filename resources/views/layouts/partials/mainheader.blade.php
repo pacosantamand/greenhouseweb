@@ -43,24 +43,27 @@
                                 </p>
                             </li>
                             <!-- Menu Body -->
-                            <li class="user-body">
+                            {{-- <li class="user-body">
                                 <div class="col-xs-6 col-xs-offset-3 text-center">
                                     <a href="#">Ver perfil</a>
                                 </div>
-                                {{-- <div class="col-xs-4 text-center">
+                                <div class="col-xs-4 text-center">
                                     <a href="#">{{ trans('adminlte_lang::message.sales') }}</a>
                                 </div>
                                 <div class="col-xs-4 text-center">
                                     <a href="#">{{ trans('adminlte_lang::message.friends') }}</a>
-                                </div> --}}
-                            </li>
+                                </div>
+                            </li> --}}
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 {{-- <div class="pull-left">
                                     <a href="{{route('users.edit',['id' => Auth::user()->id])}}" class="btn btn-default btn-flat">{{ trans('adminlte_lang::message.profile') }}</a>
                                 </div> --}}
-                                <div class="pull-center">
+                                <div class="pull-right">
                                     <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">{{ trans('adminlte_lang::message.signout') }}</a>
+                                </div>
+                                <div class="pull-left">
+                                    <a href="#" class="btn btn-default btn-flat">Perfil</a>
                                 </div>
                             </li>
                         </ul>

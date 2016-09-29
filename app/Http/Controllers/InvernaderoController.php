@@ -41,7 +41,8 @@ class InvernaderoController extends Controller
 
     public function show($id){
         $invernadero = Invernadero::find($id);
-        return view('invernaderos.show',['invernadero'=>$invernadero]);
+        $map = $this->createMap($invernadero->latitud,$invernadero->longitud);
+        return view('invernaderos.show',['invernadero'=>$invernadero,'map'=>$map]);
     }
 
     public function edit($id){
@@ -53,5 +54,32 @@ class InvernaderoController extends Controller
 
     public function update(Request $request, $id){
         
+    }
+
+    private function createMap($latitud,$longitud){
+        $config = array();
+        $config['center'] = sprintf("%f,%f", $latitud,$longitud);
+        // $config['center'] = '37.4419, -122.1419';
+        $config['map_width'] = 'auto';
+        $config['map_height'] = 250;
+        $config['zoom'] = 15;
+        $config['onboundschanged'] = 'if (!centreGot) {
+            var mapCentre = map.getCenter();
+            marker_0.setOptions({
+                position: new google.maps.LatLng(mapCentre.lat(), mapCentre.lng())
+ 
+            });
+        }
+        centreGot = true;';
+ 
+        \Gmaps::initialize($config);
+ 
+        // Colocar el marcador 
+        // Una vez se conozca la posición del usuario
+        $marker = array();
+        \Gmaps::add_marker($marker);
+ 
+        $map = \Gmaps::create_map();
+        return $map;
     }
 }

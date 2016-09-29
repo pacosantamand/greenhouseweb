@@ -17,8 +17,8 @@ class CreateInvernaderosTable extends Migration
             $table->increments('id');
             $table->string('nombre',40);
             $table->text('descripcion');
-            $table->double('latitud')->default(18.3533238);
-            $table->double('longitud')->default(-95.8131838);
+            $table->double('latitud')->default(18.354048);
+            $table->double('longitud')->default(-95.811183);
             $table->unsignedInteger('responsable')->unique();
             $table->foreign('responsable')->references('id')->on('users')->onDelete('cascade');;
             $table->timestamps();
