@@ -17,9 +17,6 @@
 						<p><strong>Nombre: </strong>{{ $invernadero->nombre }}</p>
 						<p><strong>Responsable: </strong> {{ $invernadero->encargado->name}}</p>
 						<p><strong>Descripción: </strong> {{ $invernadero->descripcion}}</p>
-						<p> aqui va el mapa </p>
-
-						<p>{{$invernadero->variables}}</p>	
  					</div>
 				</div>
 			</div>
@@ -80,34 +77,12 @@
 						 		@if($i==0)
 								 	<div class="tab-pane fade active in" id="{{$invernadero->variables->get($i)->nombre}}">
 								 		<div class="row">
-								 			<div class="col-md-8">
+								 			<div class="col-md-6">
 								 				<div class="chart">
-												<canvas id="{{  strtolower($invernadero->variables->get($i)->nombre)}}" style="height:200px"></canvas>
+												<canvas id="{{  strtolower($invernadero->variables->get($i)->nombre)}}"></canvas>
 												</div>
 								 			</div>
-								 			<div class="col-md-4">
-								 				<div class="info-box bg-red">
-		  											<span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
-													<div class="info-box-content">
-													    <span class="info-box-text">Máxima</span>
-													    <span class="info-box-number">45 °C</span>
-												  </div><!-- /.info-box-content -->
-												</div><!-- /.info-box -->
-												<div class="info-box bg-green">
-		  											<span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
-													<div class="info-box-content">
-													    <span class="info-box-text">Promedio</span>
-													    <span class="info-box-number">37 °C</span>
-												  </div><!-- /.info-box-content -->
-												</div><!-- /.info-box -->
-												<div class="info-box bg-blue">
-		  											<span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
-													<div class="info-box-content">
-													    <span class="info-box-text">Mínima</span>
-													    <span class="info-box-number">28 °C</span>
-												  </div><!-- /.info-box-content -->
-												</div><!-- /.info-box -->
-								 			</div>
+								 			
 								 		</div>
 								 	</div>
 								@else
@@ -130,7 +105,7 @@
 													<div class="info-box-content">
 													    <span class="info-box-text">Promedio</span>
 													    <span class="info-box-number">72%</span>
-												  </div><!-- /.info-box-content -->
+												  	</div><!-- /.info-box-content -->
 												</div><!-- /.info-box -->
 												<div class="info-box bg-aqua">
 		  											<span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
@@ -159,20 +134,30 @@
 
 
 <script>
+var lecturas = {!! $invernadero->ultimasLecturas() !!} ;
 var variables = {!!json_encode($invernadero->variables,JSON_FORCE_OBJECT) !!} ;
+console.log(lecturas[0].variableId);
+console.log(lecturas[0].data[0].valor);
 
-console.log("Hola mundo");
+var chartData = new Array();
+var chartLabels = new Array();
+var index=0;
+for(j=Object.keys(lecturas[0].data).length-1;j>=0;j--){
+	chartData[index]=lecturas[0].data[j].valor;
+	var hora = new Date(lecturas[0].data[j].created_at);
+	chartLabels[index]=lecturas[0].data[j].created_at;
+	index++;
+}
 
-
-for(i=0;i<Object.keys(variables).length;i++){
-    
+console.log(chartData);
+console.log(chartLabels);
+for(i=0;i<Object.keys(variables).length;i++){    
     
     var ctx = document.getElementById(variables[i].nombre.toLowerCase());
-
 	var myChart = new Chart(ctx, {
 	    type: 'line',
 	    data: {
-	    	labels: ["January", "February", "March", "April", "May", "June", "July"],
+	    	labels:chartLabels,
 	    	datasets: [
 	        {
 	            label: variables[i].nombre,
@@ -193,7 +178,7 @@ for(i=0;i<Object.keys(variables).length;i++){
 	            pointHoverBorderWidth: 2,
 	            pointRadius: 1,
 	            pointHitRadius: 10,
-	            data: [35, 29, 40, 41, 46, 35, 30],
+	            data: chartData,
 	            spanGaps: false,
 	        } ]
 		},

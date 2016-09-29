@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;  
+use App\Http\Requests;
 use App\Invernadero;
+use App\Lectura;
 use App\User;
 use App\Variable;
 use Illuminate\Http\Request;
