@@ -57,9 +57,9 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-8">
 				<div class="box box-default">
 					<div class="box-header">
 	                    <h3 class="box-title">Ultimas lecturas</h3>
@@ -82,20 +82,21 @@
 						 		@if($i==0)
 								 	<div class="tab-pane fade active in" id="{{$invernadero->variables->get($i)->nombre}}">
 								 		<div class="row">
-								 			<div class="col-md-8">
+								 		<br />
+								 			<div class="col-md-12">
 								 				<div class="chart">
-												<canvas id="{{  strtolower($invernadero->variables->get($i)->nombre)}}" ></canvas>
+												<canvas id="{{  strtolower($invernadero->variables->get($i)->nombre)}}" style="height: 250px"></canvas>
 												</div>
 								 			</div>
-								 			
 								 		</div>
 								 	</div>
 								@else
 								 	 <div class="tab-pane fade" id="{{$invernadero->variables->get($i)->nombre}}">
 								 	 	<div class="row">
-								 	 		<div class="col-md-8">
+								 	 		<br />
+								 	 		<div class="col-md-12">
 								 	 			<div class="chart">
-								 	 			<canvas id="{{  strtolower($invernadero->variables->get($i)->nombre)}}" ></canvas>
+								 	 			<canvas id="{{  strtolower($invernadero->variables->get($i)->nombre)}}" style="height: 250px"></canvas>
 								 			</div>
 								 	 	</div>
 								 	</div>
@@ -106,12 +107,14 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
 @endsection
 
 
 @section('other_scripts')
 
+<script src="{{ asset('/js/Moment.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/Chart.js') }}" type="text/javascript"></script>
 
 
@@ -163,10 +166,16 @@ for(i=0;i<Object.keys(variables).length;i++){
 	    options: {
 	        scales: {
 	            xAxes: [{
-	                // type: 'linear',
-	                position: 'bottom'
+	            	type:'time',
+	                time:{
+	                	unit:'hour'
+	                },
+	                //position: 'bottom'
 	            }]
-	        }
+	        },
+	        legend:{
+	        	display:false,
+	        },
 	    }
 	});
 }
