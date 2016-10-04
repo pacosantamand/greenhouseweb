@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Invernadero;
 use App\Lectura;
+use App\Tarea;
 use App\User;
 use App\Variable;
 use Illuminate\Http\Request;
@@ -59,7 +60,6 @@ class InvernaderoController extends Controller
     private function createMap($latitud,$longitud){
         $config = array();
         $config['center'] = sprintf("%f,%f", $latitud,$longitud);
-        // $config['center'] = '37.4419, -122.1419';
         $config['map_width'] = 'auto';
         $config['map_height'] = 250;
         $config['zoom'] = 15;
@@ -81,5 +81,9 @@ class InvernaderoController extends Controller
  
         $map = \Gmaps::create_map();
         return $map;
+    }
+
+    public function graficas($id){
+        return view('invernaderos.extras.graficas');
     }
 }

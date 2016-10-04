@@ -10,7 +10,7 @@ class Invernadero extends Model
     protected $fillable=['nombre','descripcion','responsable'];
 
     public function tareas(){
-    	return $this->hasMany('App\Tarea','invernadero')->orderBy('id','desc');
+    	return $this->hasMany('App\Tarea','invernadero')->take(4)->orderBy('id','desc');
     }
 
     public function encargado(){

@@ -44,15 +44,15 @@
 									@else
 									<span class="label label-danger pull-right"><i class="fa fa-warning"></i> No realizada</span>
 									@endif</a>
-									<span class="product-description">{{$tarea->colaborador->name}}</span>
+									<span class="product-description">{{$tarea->created_at->format('d/m/Y H:i')}}</span>
 								</div>
 							</li>
 							@endforeach
 						</ul>
 					</div>
 					<div class="box-footer">
-						<a href="#" class="btn btn-sm btn-default btn-flat pull-left">Ver todas</a>
-						<a href="#" class="btn btn-sm btn-primary btn-flat pull-right">Asignar tarea</a>
+						<a href="#" class="btn btn-default btn-flat pull-left">Ver todas</a>
+						<a href="#" class="btn btn-primary btn-flat pull-right">Asignar tarea</a>
 					</div>
 				</div>
 			</div>
@@ -85,9 +85,33 @@
 								 		<br />
 								 			<div class="col-md-12">
 								 				<div class="chart">
-												<canvas id="{{  strtolower($invernadero->variables->get($i)->nombre)}}" style="height: 250px"></canvas>
+													<canvas id="{{  strtolower($invernadero->variables->get($i)->nombre)}}"></canvas>
 												</div>
 								 			</div>
+								 		</div>
+								 		<div class="row">
+								 			<div class="col-sm-4 col-xs-4">
+							                  <div class="description-block border-right">
+							                    <span class="description-percentage text-red"><i class="fa fa-caret-up"></i><h5>45 ºC</h5></span>
+							                    <span class="description-text">MAXIMA</span>
+							                  </div>
+							                  <!-- /.description-block -->
+							                </div>
+							                <!-- /.col -->
+							                <div class="col-sm-4 col-xs-4">
+							                  <div class="description-block border-right">
+							                    <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i><h5>38 ºC</h5></span>
+							                    <span class="description-text">PROMEDIO</span>
+							                  </div>
+							                  <!-- /.description-block -->
+							                </div>
+							                <div class="col-sm-4 col-xs-4">
+							                  <div class="description-block border-right">
+							                    <span class="description-percentage text-blue"><i class="fa fa-caret-down"></i><h5>30 ºC</h5></span>
+							                    <span class="description-text">MINIMA</span>
+							                  </div>
+							                  <!-- /.description-block -->
+							                </div>
 								 		</div>
 								 	</div>
 								@else
@@ -96,15 +120,52 @@
 								 	 		<br />
 								 	 		<div class="col-md-12">
 								 	 			<div class="chart">
-								 	 			<canvas id="{{  strtolower($invernadero->variables->get($i)->nombre)}}" style="height: 250px"></canvas>
+								 	 				<canvas id="{{  strtolower($invernadero->variables->get($i)->nombre)}}"></canvas>
+								 				</div>
 								 			</div>
 								 	 	</div>
+								 	 	<div class="row">
+								 			<div class="col-sm-4 col-xs-4">
+							                  <div class="description-block border-right">
+							                    <span class="description-percentage text-red"><i class="fa fa-caret-up"></i><h5>45 ºC</h5></span>
+							                    <span class="description-text">MAXIMA</span>
+							                  </div>
+							                  <!-- /.description-block -->
+							                </div>
+							                <!-- /.col -->
+							                <div class="col-sm-4 col-xs-4">
+							                  <div class="description-block border-right">
+							                    <span class="description-percentage text-green"><i class="fa fa-caret-left"></i><h5>38 ºC</h5></span>
+							                    <span class="description-text">PROMEDIO</span>
+							                  </div>
+							                  <!-- /.description-block -->
+							                </div>
+							                <div class="col-sm-4 col-xs-4">
+							                  <div class="description-block border-right">
+							                    <span class="description-percentage text-blue"><i class="fa fa-caret-down"></i><h5>30 ºC</h5></span>
+							                    <span class="description-text">MINIMA</span>
+							                  </div>
+							                  <!-- /.description-block -->
+							                </div>
+								 		</div>
 								 	</div>
 								@endif
 							@endfor
 						</div>
 					</div>
+					<div class="box-footer">
+						<a href="{{url('invernaderos/'.$invernadero->id.'/graficas')}}" class="btn btn-default btn-flat pull-left">Historial de Lecturas</a>
+					</div>
 				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="box box-default">
+					<div class="box-header with-border">
+	                    <h3 class="box-title">Reportes</h3>
+	                </div>
+	                <div class="box-body">
+	                </div>
+	            </div>
 			</div>
 		</div>
 
@@ -135,6 +196,7 @@ for(i=0;i<Object.keys(variables).length;i++){
 	}
 
     var ctx = document.getElementById(variables[i].nombre.toLowerCase());
+    ctx.height = 120;
 	var myChart = new Chart(ctx, {
 	    type: 'line',
 	    data: {
@@ -144,17 +206,17 @@ for(i=0;i<Object.keys(variables).length;i++){
 	            label: variables[i].nombre,
 	            fill: true,
 	            lineTension: 0.1,
-	            backgroundColor: "rgba(75,192,192,0.4)",
-	            borderColor: "rgba(75,192,192,1)",
+	            backgroundColor: "rgba(6,166,90,0.4)",
+	            borderColor: "rgba(6,166,90,1)",
 	            borderCapStyle: 'butt',
 	            borderDash: [],
 	            borderDashOffset: 0.0,
 	            borderJoinStyle: 'miter',
-	            pointBorderColor: "rgba(75,192,192,1)",
+	            pointBorderColor: "rgba(6,166,90,1)",
 	            pointBackgroundColor: "#fff",
 	            pointBorderWidth: 2,
 	            pointHoverRadius: 5,
-	            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+	            pointHoverBackgroundColor: "rgba(6,166,90,1)",
 	            pointHoverBorderColor: "rgba(220,220,220,1)",
 	            pointHoverBorderWidth: 2,
 	            pointRadius: 5,

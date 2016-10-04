@@ -8,7 +8,9 @@ class Tarea extends Model
 {
     protected $table = 'tareas';
 
-    public function colaborador(){
-    	return $this->hasOne('App\User','id','user_id');
+    protected $fillable = ['nombre','descripcion','responsable'];
+
+    public function responsable(){
+    	return $this->hasOne('App\User','responsable');
     }
 }

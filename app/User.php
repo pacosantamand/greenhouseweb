@@ -32,6 +32,6 @@ class User extends Authenticatable
     }
 
     public function tareas(){
-        return $this->belongsTo('App\Tareas');
+        return $this->belongsTo('App\Tarea','responsable');
     }
 }
