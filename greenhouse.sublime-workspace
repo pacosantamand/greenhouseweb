@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"col",
+				"col-md-offset-1\t(index.blade.php)"
+			],
+			[
 				"Inv",
 				"InvernaderoController"
 			],
@@ -120,10 +124,6 @@
 				"getElementById"
 			],
 			[
-				"col",
-				"col-md-4"
-			],
-			[
 				"Inver",
 				"Invernadero"
 			],
@@ -196,19 +196,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/Http/Controllers/UserController.php",
-			"settings":
-			{
-				"buffer_size": 1111,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/Http/Controllers/InvernaderoController.php",
 			"settings":
 			{
-				"buffer_size": 2733,
+				"buffer_size": 3012,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -218,6 +209,16 @@
 			"settings":
 			{
 				"buffer_size": 2970,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/VariableController.php",
+			"settings":
+			{
+				"buffer_size": 1262,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
@@ -225,7 +226,7 @@
 			"file": "resources/views/invernaderos/extras/graficas.blade.php",
 			"settings":
 			{
-				"buffer_size": 575,
+				"buffer_size": 586,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -243,52 +244,7 @@
 			"file": "resources/views/invernaderos/show.blade.php",
 			"settings":
 			{
-				"buffer_size": 9284,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "routes/web.php",
-			"settings":
-			{
-				"buffer_size": 1011,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/Tarea.php",
-			"settings":
-			{
-				"buffer_size": 289,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/User.php",
-			"settings":
-			{
-				"buffer_size": 721,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "composer.json",
-			"settings":
-			{
-				"buffer_size": 1375,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "config/app.php",
-			"settings":
-			{
-				"buffer_size": 9384,
+				"buffer_size": 9157,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -297,7 +253,16 @@
 			"file": "resources/views/layouts/app.blade.php",
 			"settings":
 			{
-				"buffer_size": 1981,
+				"buffer_size": 1999,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/invernaderos/extras/tareas.blade.php",
+			"settings":
+			{
+				"buffer_size": 2284,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -353,18 +318,24 @@
 	"expanded_folders":
 	[
 		"/Applications/MAMP/htdocs/greenhouseweb",
+		"/Applications/MAMP/htdocs/greenhouseweb/app",
 		"/Applications/MAMP/htdocs/greenhouseweb/resources",
 		"/Applications/MAMP/htdocs/greenhouseweb/resources/views",
-		"/Applications/MAMP/htdocs/greenhouseweb/resources/views/auth",
 		"/Applications/MAMP/htdocs/greenhouseweb/resources/views/invernaderos",
 		"/Applications/MAMP/htdocs/greenhouseweb/resources/views/invernaderos/extras",
 		"/Applications/MAMP/htdocs/greenhouseweb/resources/views/layouts",
+		"/Applications/MAMP/htdocs/greenhouseweb/resources/views/users",
 		"/Applications/MAMP/htdocs/greenhouseweb/routes",
 		"/Applications/MAMP/htdocs/greenhouseweb/storage"
 	],
 	"file_history":
 	[
 		"/Applications/MAMP/htdocs/greenhouseweb/routes/web.php",
+		"/Applications/MAMP/htdocs/greenhouseweb/app/Http/Controllers/UserController.php",
+		"/Applications/MAMP/htdocs/greenhouseweb/config/app.php",
+		"/Applications/MAMP/htdocs/greenhouseweb/composer.json",
+		"/Applications/MAMP/htdocs/greenhouseweb/app/User.php",
+		"/Applications/MAMP/htdocs/greenhouseweb/app/Tarea.php",
 		"/Applications/MAMP/htdocs/greenhouseweb/resources/views/layouts/partials/footer.blade.php",
 		"/Applications/MAMP/htdocs/greenhouseweb/resources/views/layouts/partials/htmlheader.blade.php",
 		"/Applications/MAMP/htdocs/greenhouseweb/resources/views/layouts/partials/mainheader.blade.php",
@@ -387,10 +358,7 @@
 		"/Applications/MAMP/htdocs/greenhouseweb/app/Http/Requests/VariableRequest.php",
 		"/Applications/MAMP/htdocs/greenhouseweb/app/Http/Controllers/VariableController.php",
 		"/Applications/MAMP/htdocs/greenhouseweb/app/Variable.php",
-		"/Applications/MAMP/htdocs/greenhouseweb/app/Http/Controllers/UserController.php",
 		"/Applications/MAMP/htdocs/greenhouseweb/app/Invernadero.php",
-		"/Applications/MAMP/htdocs/greenhouseweb/app/Tarea.php",
-		"/Applications/MAMP/htdocs/greenhouseweb/app/User.php",
 		"/Applications/MAMP/htdocs/greenhouseweb/resources/views/variables/create.blade.php",
 		"/Applications/MAMP/htdocs/greenhouseweb/database/migrations/2016_09_21_192218_create_variables_table.php",
 		"/Applications/MAMP/htdocs/greenhouseweb/database/migrations/2016_09_21_213120_create_lecturas_table.php",
@@ -465,54 +433,24 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 7,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/Http/Controllers/UserController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1111,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								506,
-								506
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "app/Http/Controllers/InvernaderoController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2733,
+						"buffer_size": 3012,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2717,
-								2717
+								2833,
+								2833
 							]
 						],
 						"settings":
@@ -522,19 +460,49 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1458.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 1,
 					"file": "resources/views/invernaderos/index.blade.php",
-					"semi_transient": true,
+					"semi_transient": false,
 					"settings":
 					{
 						"buffer_size": 2970,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2778,
+								2883
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 776.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/Http/Controllers/VariableController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1262,
 						"regions":
 						{
 						},
@@ -547,7 +515,7 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -555,7 +523,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -564,15 +532,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 575,
+						"buffer_size": 586,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								544,
-								544
+								434,
+								434
 							]
 						],
 						"settings":
@@ -585,7 +553,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -601,8 +569,8 @@
 						"selection":
 						[
 							[
-								293,
-								293
+								955,
+								927
 							]
 						],
 						"settings":
@@ -612,10 +580,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 56.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -624,15 +592,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9284,
+						"buffer_size": 9157,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6205,
-								6205
+								6739,
+								6726
 							]
 						],
 						"settings":
@@ -641,173 +609,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3474.0,
+						"translation.y": 4582.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "routes/web.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1011,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								775,
-								775
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/Tarea.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 289,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								124,
-								124
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "app/User.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 721,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								684,
-								684
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "composer.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1375,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								336,
-								306
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "config/app.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9384,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9372,
-								9372
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4688.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
 					"file": "resources/views/layouts/app.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1981,
+						"buffer_size": 1999,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1756,
-								1756
+								1598,
+								1598
 							]
 						],
 						"settings":
@@ -817,10 +639,40 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 513.0,
+						"translation.y": 608.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "resources/views/invernaderos/extras/tareas.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2284,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								335,
+								335
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]

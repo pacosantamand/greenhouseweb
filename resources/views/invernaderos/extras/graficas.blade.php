@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-    Invernaderos
+    Invernaderos - Gráficas
 @endsection
 
 @section('main-content')

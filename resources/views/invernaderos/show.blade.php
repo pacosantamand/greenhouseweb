@@ -20,39 +20,16 @@
 						<p><strong>Nombre: </strong>{{ $invernadero->nombre }}</p>
 						<p><strong>Responsable: </strong> {{ $invernadero->encargado->name}}</p>
 						<p><strong>Descripción: </strong> {{ $invernadero->descripcion}}</p>
-
-						{!!$map['html']!!}
  					</div>
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="box box-default">
 					<div class="box-header with-border">
-	                    <h3 class="box-title">Ultimas tareas</h3>
+	                    <h3 class="box-title">Ubicación</h3>
 	                </div>
 	                <div class="box-body">
-						<ul class="products-list product-list-in-box">
-							@foreach($invernadero->tareas as $tarea)
-							<li class="item">
-								<div class="product-img">
-									<img src="{{asset('/img/default-50x50.gif')}}"></img>
-								</div>
-								<div class="product-info">
-									<a href ="#" class="product-title">{{$tarea->nombre}}
-									@if($tarea->realizada == 1)
-									<span class="label label-success pull-right"><i class="fa fa-check"></i> Realizada</span>
-									@else
-									<span class="label label-danger pull-right"><i class="fa fa-warning"></i> No realizada</span>
-									@endif</a>
-									<span class="product-description">{{$tarea->created_at->format('d/m/Y H:i')}}</span>
-								</div>
-							</li>
-							@endforeach
-						</ul>
-					</div>
-					<div class="box-footer">
-						<a href="#" class="btn btn-default btn-flat pull-left">Ver todas</a>
-						<a href="#" class="btn btn-primary btn-flat pull-right">Asignar tarea</a>
+						{!!$map['html']!!}
 					</div>
 				</div>
 			</div>
@@ -62,10 +39,8 @@
 			<div class="col-md-8">
 				<div class="box box-default">
 					<div class="box-header">
-	                    <h3 class="box-title">Ultimas lecturas</h3>
-	                    <div class="box-tools pull-right">
-      						<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-    					</div><!-- /.box-tools -->
+	                    <h3 class="box-title">Últimas lecturas</h3>
+	                    
 	                </div>
 	                <div class="box-body">
 	                	<ul class="nav nav-tabs">
@@ -161,10 +136,33 @@
 			<div class="col-md-4">
 				<div class="box box-default">
 					<div class="box-header with-border">
-	                    <h3 class="box-title">Reportes</h3>
+	                    <h3 class="box-title">Ultimas tareas</h3>
 	                </div>
 	                <div class="box-body">
-	                </div>
+						<ul class="products-list product-list-in-box">
+							@foreach($invernadero->tareas as $tarea)
+							<li class="item">
+								<div class="product-img">
+									<img src="{{asset('/img/default-50x50.gif')}}"></img>
+								</div>
+								<div class="product-info">
+									<a href ="#" class="product-title">{{$tarea->nombre}}
+									@if($tarea->realizada == 1)
+									<span class="label label-success pull-right"><i class="fa fa-check"></i> Realizada</span>
+									@else
+									<span class="label label-danger pull-right"><i class="fa fa-warning"></i> No realizada</span>
+									@endif</a>
+									<span class="product-description">{{$tarea->created_at->format('d/m/Y H:i')}}</span>
+								</div>
+							</li>
+							@endforeach
+						</ul>
+					</div>
+					<div class="box-footer">
+						<a href="{{url('invernaderos/'.$invernadero->id.'/tareas')}}" class="btn btn-default btn-flat pull-left">Ver todas</a>
+						<a href="#" class="btn btn-primary btn-flat pull-right">Asignar tarea</a>
+					</div>
+				</div>
 	            </div>
 			</div>
 		</div>
@@ -196,7 +194,7 @@ for(i=0;i<Object.keys(variables).length;i++){
 	}
 
     var ctx = document.getElementById(variables[i].nombre.toLowerCase());
-    ctx.height = 120;
+    ctx.height = 90;
 	var myChart = new Chart(ctx, {
 	    type: 'line',
 	    data: {

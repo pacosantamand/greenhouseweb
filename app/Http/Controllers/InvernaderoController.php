@@ -86,4 +86,10 @@ class InvernaderoController extends Controller
     public function graficas($id){
         return view('invernaderos.extras.graficas');
     }
+
+    public function tareas($id){
+        $tareas = Tarea::select('nombre','descripcion','realizada','created_at')->where(
+            'invernadero','=',$id)->orderBy('created_at','desc')->paginate(5);
+        return view('invernaderos.extras.tareas',['tareas'=>$tareas]);
+    }
 }
