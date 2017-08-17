@@ -6,7 +6,8 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Adminlte-laravel - {{ trans('adminlte_lang::message.landingdescription') }} ">
+    <meta name="description" content="Adminlte-laravel - {{
+     trans('adminlte_lang::message.landingdescription') }} ">
     <meta name="author" content="Sergi Tur Badenas - acacha.org">
 
     <meta property="og:title" content="Adminlte-laravel" />
@@ -63,9 +64,8 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
                     <li><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></li>
-                    <li><a href="{{ url('/register') }}">{{ trans('adminlte_lang::message.register') }}</a></li>
                 @else
-                    <li><a href="/home">{{ Auth::user()->name }}</a></li>
+                    <li><a href="{{ url('/home') }}">{{ Auth::user()->name }}</a></li>
                 @endif
             </ul>
         </div><!--/.nav-collapse -->

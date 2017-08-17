@@ -63,7 +63,7 @@
                                     <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">{{ trans('adminlte_lang::message.signout') }}</a>
                                 </div>
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                                    <a href="{{route('users.show',['id'=> Auth::user()->id])}}" class="btn btn-default btn-flat">Perfil</a>
                                 </div>
                             </li>
                         </ul>

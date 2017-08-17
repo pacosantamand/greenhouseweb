@@ -61,7 +61,7 @@ class InvernaderoController extends Controller
         $config = array();
         $config['center'] = sprintf("%f,%f", $latitud,$longitud);
         $config['map_width'] = 'auto';
-        $config['map_height'] = 250;
+        $config['map_height'] = 200;
         $config['zoom'] = 15;
         $config['onboundschanged'] = 'if (!centreGot) {
             var mapCentre = map.getCenter();
@@ -78,7 +78,7 @@ class InvernaderoController extends Controller
         // Una vez se conozca la posición del usuario
         $marker = array();
         \Gmaps::add_marker($marker);
- 
+
         $map = \Gmaps::create_map();
         return $map;
     }

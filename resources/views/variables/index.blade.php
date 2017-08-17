@@ -60,8 +60,7 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <p><strong>Nombre:</strong> {{$variable->nombre}}</p>
-                                                        {{-- <br /> --}}
-                                                        <p><strong>Descripción:</strong> {{$variable->descripcion}}</p>
+
                                                         {{-- <br /> --}}
                                                         <p><strong>Unidad de medida: </strong>{{$variable->unidad_de_medida}}</p>
                                                     </div>

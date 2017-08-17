@@ -29,7 +29,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-green sidebar-mini fixed">
+<body class="hold-transition skin-green sidebar-mini sidebar-collapse">
 <div class="wrapper">
 
     @include('layouts.partials.mainheader')

@@ -5,10 +5,12 @@
 @endsection
 
 @section('head_scripts')
-<script type="text/javascript">var centreGot = false;</script>{!!$map['js']!!}
+<script type="text/javascript"> var centreGot = false;</script>
+{!!$map['js']!!}
 @endsection
 
 @section('main-content')
+<div class="container">
 	<div class="container spark-screen">
 		<div class="row">
 			<div class="col-md-6">
@@ -20,6 +22,11 @@
 						<p><strong>Nombre: </strong>{{ $invernadero->nombre }}</p>
 						<p><strong>Responsable: </strong> {{ $invernadero->encargado->name}}</p>
 						<p><strong>Descripción: </strong> {{ $invernadero->descripcion}}</p>
+                        <p><strong>Colaboradores: </strong></p>
+                            @foreach($invernadero->colaboradores as $colaborador)
+                                <li>{{$colaborador->name}}</li>
+                            @endforeach
+
  					</div>
 				</div>
 			</div>
@@ -143,7 +150,7 @@
 							@foreach($invernadero->tareas as $tarea)
 							<li class="item">
 								<div class="product-img">
-									<img src="{{asset('/img/default-50x50.gif')}}"></img>
+									<img src="{{asset('/img/default-50x50.gif')}}"/>
 								</div>
 								<div class="product-info">
 									<a href ="#" class="product-title">{{$tarea->nombre}}
@@ -163,11 +170,10 @@
 						<a href="#" class="btn btn-primary btn-flat pull-right">Asignar tarea</a>
 					</div>
 				</div>
-	            </div>
-			</div>
+	        </div>
 		</div>
-
 	</div>
+</div>
 @endsection
 
 
@@ -183,8 +189,8 @@ var variables = {!!json_encode($invernadero->variables,JSON_FORCE_OBJECT) !!} ;
 
 for(i=0;i<Object.keys(variables).length;i++){    
     
-	var chartData = new Array();
-	var chartLabels = new Array();
+	var chartData = [];
+	var chartLabels = [];
 	var index=0;
 	for(j=Object.keys(lecturas[i].data).length-1;j>=0;j--){
 		chartData[index]=lecturas[i].data[j].valor;
